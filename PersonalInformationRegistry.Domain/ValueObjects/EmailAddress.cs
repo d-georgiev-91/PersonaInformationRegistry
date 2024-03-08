@@ -2,9 +2,9 @@
 
 public class EmailAddress
 {
-    public static readonly string[] RestricetedTopLevelDomains = new[] { "io", "zw", "ru" };
+    public static readonly string[] RestrictedTopLevelDomains = { "io", "zw", "ru" };
 
-    public string Value { get; private set; } = string.Empty;
+    public string Value { get; } = string.Empty;
 
     private EmailAddress() { }
 
@@ -15,7 +15,7 @@ public class EmailAddress
             throw new ArgumentException("Email address cannot be empty.");
         }
 
-        if (RestricetedTopLevelDomains.Any(value.EndsWith))
+        if (RestrictedTopLevelDomains.Any(value.EndsWith))
         {
             throw new ArgumentException("Invalid email, restricted top-level domain.");
         }

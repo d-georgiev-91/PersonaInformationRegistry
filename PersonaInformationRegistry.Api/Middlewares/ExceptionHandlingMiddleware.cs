@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PersonalInformationRegistry.Application;
 using System.Text.Json;
+using PersonalInformationRegistry.Domain;
 
 namespace PersonaInformationRegistry.Api.Middlewares;
 

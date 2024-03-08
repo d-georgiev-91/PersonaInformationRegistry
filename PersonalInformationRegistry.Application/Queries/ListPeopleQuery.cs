@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using PersonalInformationRegistry.Application.DTOs;
 
-namespace PersonalInformationRegistry.Application.CommandHandlers;
+namespace PersonalInformationRegistry.Application.Queries;
 
 public class ListPeopleQuery : IRequest<PaginatedList<PersonDto>>
 {

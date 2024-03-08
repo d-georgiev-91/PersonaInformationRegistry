@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
+using MediatR;
 using NSubstitute;
 using NSubstitute.ReturnsExtensions;
 using PersonalInformationRegistry.Application.DTOs;
 using PersonalInformationRegistry.Application.Queries;
 using PersonalInformationRegistry.Application.QueryHandlers;
+using PersonalInformationRegistry.Domain;
 using PersonalInformationRegistry.Domain.Entities;
 using PersonalInformationRegistry.Domain.Repositories;
 
@@ -14,7 +16,7 @@ public class GetPersonQueryHandlerTests
 {
     private IPersonRepository _repository;
     private IMapper _mapper;
-    private GetPersonQueryHandler _handler;
+    private IRequestHandler<GetPersonQuery, PersonDto> _handler;
 
     [SetUp]
     public void SetUp()
@@ -27,7 +29,7 @@ public class GetPersonQueryHandlerTests
     [Test]
     public async Task Handle_ValidId_ReturnsPersonDto()
     {
-        var personId = 1;
+        const int personId = 1;
         var query = new GetPersonQuery { Id = personId };
         var person = new Person("John Doe", 30, "American", "url", new Credentials("email@example.com", "password"));
         var personDto = new PersonDto { Id = personId, Name = "John Doe" };

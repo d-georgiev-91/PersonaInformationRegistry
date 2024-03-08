@@ -15,9 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonaInformationRegistry.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonaInformationRegistry.Infrastructure.Tests", "PersonaInformationRegistry.Infrastructure.Tests\PersonaInformationRegistry.Infrastructure.Tests.csproj", "{3C0F8723-EF51-4D1A-8BFC-D6B37C408CBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalInformationRegistry.Application.Tests", "PersonalInformationRegistry.Application.Tests\PersonalInformationRegistry.Application.Tests.csproj", "{6D52F45F-EDFC-4CE0-B905-EE67910CD8BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalInformationRegistry.Application.Tests", "PersonalInformationRegistry.Application.Tests\PersonalInformationRegistry.Application.Tests.csproj", "{6D52F45F-EDFC-4CE0-B905-EE67910CD8BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalInformationRegistry.Domain.Tests", "PersonalInformationRegistry.Domain.Tests\PersonalInformationRegistry.Domain.Tests.csproj", "{19D935FE-3C63-4971-A343-1244ABC32F29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PersonalInformationRegistry.Domain.Tests", "PersonalInformationRegistry.Domain.Tests\PersonalInformationRegistry.Domain.Tests.csproj", "{19D935FE-3C63-4971-A343-1244ABC32F29}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

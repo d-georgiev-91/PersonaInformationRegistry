@@ -1,9 +1,9 @@
-using AutoMapper;
+using MediatR;
 using NSubstitute;
 using NSubstitute.ReturnsExtensions;
-using PersonaInformationRegistry.Infrastructure;
 using PersonalInformationRegistry.Application.CommandHandlers;
 using PersonalInformationRegistry.Application.Commands;
+using PersonalInformationRegistry.Domain;
 using PersonalInformationRegistry.Domain.Entities;
 using PersonalInformationRegistry.Domain.Repositories;
 
@@ -13,7 +13,7 @@ namespace PersonalInformationRegistry.Application.Tests.CommandHandlers;
 public class DeletePersonCommandHandlerTests
 {
     private IPersonRepository _repository;
-    private DeletePersonCommandHandler _handler;
+    private IRequestHandler<DeletePersonCommand, Unit> _handler;
 
     [SetUp]
     public void SetUp()

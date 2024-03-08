@@ -3,9 +3,9 @@ using PersonalInformationRegistry.Application.Commands;
 
 namespace PersonalInformationRegistry.Application.Validators;
 
-public class CreatePersonCommandValidator : AbstractValidator<CreatePersonCommand>
+public class UpdatePersonCommandValidator : AbstractValidator<UpdatePersonCommand>
 {
-    public CreatePersonCommandValidator()
+    public UpdatePersonCommandValidator()
     {
         RuleFor(command => command.Name).NotEmpty();
         RuleFor(command => command.Age).GreaterThanOrEqualTo(0);

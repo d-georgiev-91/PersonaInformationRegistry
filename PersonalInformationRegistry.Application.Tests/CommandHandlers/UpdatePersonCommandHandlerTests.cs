@@ -1,9 +1,10 @@
 using AutoMapper;
+using MediatR;
 using NSubstitute;
 using NSubstitute.ReturnsExtensions;
-using PersonaInformationRegistry.Infrastructure;
 using PersonalInformationRegistry.Application.CommandHandlers;
 using PersonalInformationRegistry.Application.Commands;
+using PersonalInformationRegistry.Domain;
 using PersonalInformationRegistry.Domain.Entities;
 using PersonalInformationRegistry.Domain.Repositories;
 
@@ -14,7 +15,7 @@ public class UpdatePersonCommandHandlerTests
 {
     private IPersonRepository _repository;
     private IMapper _mapper;
-    private UpdatePersonCommandHandler _handler;
+    private IRequestHandler<UpdatePersonCommand, Unit> _handler;
 
     [SetUp]
     public void SetUp()

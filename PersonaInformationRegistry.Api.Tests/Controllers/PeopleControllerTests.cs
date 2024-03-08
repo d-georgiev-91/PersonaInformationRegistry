@@ -68,7 +68,7 @@ public class PeopleControllerTests
         var okObjectResult = result as OkObjectResult;
         
         Assert.That(okObjectResult, Is.Not.Null);
-        Assert.That(okObjectResult.Value, Is.EqualTo(expected));
+        Assert.That(okObjectResult?.Value, Is.EqualTo(expected));
     }
 
     [Test]

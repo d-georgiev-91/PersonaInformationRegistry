@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using PersonaInformationRegistry.Api.Middlewares;
 using PersonalInformationRegistry.Application;
 using System.Text.Json;
+using PersonalInformationRegistry.Domain;
 
 namespace PersonaInformationRegistry.Api.Tests.Middlewares
 {
@@ -15,12 +16,15 @@ namespace PersonaInformationRegistry.Api.Tests.Middlewares
         [SetUp]
         public void SetUp()
         {
-            _context = new DefaultHttpContext();
-            _context.Response.Body = new MemoryStream();
-
-            _middleware = new ExceptionHandlingMiddleware(async (innerHttpContext) =>
+            _context = new DefaultHttpContext
             {
-            });
+                Response =
+                {
+                    Body = new MemoryStream()
+                }
+            };
+
+            _middleware = new ExceptionHandlingMiddleware((_) => Task.CompletedTask);
         }
 
         [TearDown]
@@ -39,10 +43,7 @@ namespace PersonaInformationRegistry.Api.Tests.Middlewares
         [Test]
         public async Task Middleware_CapturesNotFoundException_ReturnsNotFoundResponse()
         {
-            _middleware = new ExceptionHandlingMiddleware((innerHttpContext) =>
-            {
-                throw new NotFoundException("Resource not found.");
-            });
+            _middleware = new ExceptionHandlingMiddleware((_) => throw new NotFoundException("Resource not found."));
 
             await _middleware.InvokeAsync(_context);
 
@@ -59,10 +60,7 @@ namespace PersonaInformationRegistry.Api.Tests.Middlewares
         [Test]
         public async Task Middleware_CapturesGenericException_ReturnsInternalServerErrorResponse()
         {
-            _middleware = new ExceptionHandlingMiddleware((innerHttpContext) =>
-            {
-                throw new Exception("General error.");
-            });
+            _middleware = new ExceptionHandlingMiddleware((_) => throw new Exception("General error."));
 
             await _middleware.InvokeAsync(_context);
 

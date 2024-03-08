@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PersonalInformationRegistry.Domain.Entities;
+using PersonalInformationRegistry.Domain.Repositories;
 
 namespace PersonaInformationRegistry.Infrastructure.Tests;
 
@@ -7,7 +8,7 @@ namespace PersonaInformationRegistry.Infrastructure.Tests;
 public class PersonRepositoryTests
 {
     private ApplicationDbContext _context;
-    private PersonRepository _repository;
+    private IPersonRepository _repository;
 
     [SetUp]
     public void Setup()
@@ -82,7 +83,7 @@ public class PersonRepositoryTests
         var result = await _repository.GetByIdAsync(person.Id);
 
         Assert.That(result, Is.Not.Null);
-        Assert.That(result.Id, Is.EqualTo(person.Id));
+        Assert.That(result!.Id, Is.EqualTo(person.Id));
     }
 
     [Test]
@@ -117,7 +118,7 @@ public class PersonRepositoryTests
         await _context.SaveChangesAsync();
 
         // Act
-        person = new Person("Updated Name", person.Age, person.Nationality, person.PictureUrl, new Credentials(person.Credentials.Email, person.Credentials.Password));
+        person = new Person("Updated Name", person.Age, person.Nationality, person.PictureUrl, new Credentials(person.Credentials!.Email, person.Credentials.Password));
         await _repository.UpdateAsync(person);
 
         // Assert

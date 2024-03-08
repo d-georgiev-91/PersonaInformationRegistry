@@ -2,6 +2,7 @@
 using MediatR;
 using PersonalInformationRegistry.Application.DTOs;
 using PersonalInformationRegistry.Application.Queries;
+using PersonalInformationRegistry.Domain;
 using PersonalInformationRegistry.Domain.Repositories;
 
 namespace PersonalInformationRegistry.Application.QueryHandlers;

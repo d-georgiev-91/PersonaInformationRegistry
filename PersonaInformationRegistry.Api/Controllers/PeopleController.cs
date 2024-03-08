@@ -1,6 +1,5 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using PersonalInformationRegistry.Application.CommandHandlers;
 using PersonalInformationRegistry.Application.Commands;
 using PersonalInformationRegistry.Application.DTOs;
 using PersonalInformationRegistry.Application.Queries;
@@ -21,16 +20,11 @@ public class PeopleController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Post([FromBody] CreatePersonCommand command)
     {
-        if (!ModelState.IsValid)
-        {
-            return BadRequest(ModelState);
-        }
-
         var id = await _mediator.Send(command);
         return CreatedAtAction(nameof(Get), new { id }, command);
     }
 
-    [HttpPut("{id}")]
+    [HttpPut("{id:int}")]
     public async Task<IActionResult> Put(int id, [FromBody] UpdatePersonCommand command)
     {
         command.Id = id;
@@ -39,22 +33,17 @@ public class PeopleController : ControllerBase
         return NoContent();
     }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("{id:int}")]
     public async Task<IActionResult> Delete(int id)
     {
         var result = await _mediator.Send(new DeletePersonCommand(id));
         return Ok(result);
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{id:int}")]
     public async Task<IActionResult> Get(int id)
     {
         var result = await _mediator.Send(new GetPersonQuery { Id = id });
-
-        if (result == null)
-        {
-            return NotFound();
-        }
 
         return Ok(result);
     }

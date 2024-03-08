@@ -1,4 +1,5 @@
 using AutoMapper;
+using MediatR;
 using NSubstitute;
 using PersonalInformationRegistry.Application.CommandHandlers;
 using PersonalInformationRegistry.Application.Commands;
@@ -12,7 +13,7 @@ public class CreatePersonCommandHandlerTests
 {
     private IPersonRepository _repository;
     private IMapper _mapper;
-    private CreatePersonCommandHandler _handler;
+    private IRequestHandler<CreatePersonCommand, int> _handler;
 
     [SetUp]
     public void SetUp()

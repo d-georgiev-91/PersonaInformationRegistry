@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using PersonalInformationRegistry.Application.Commands;
+using PersonalInformationRegistry.Domain;
 using PersonalInformationRegistry.Domain.Repositories;
 
 namespace PersonalInformationRegistry.Application.CommandHandlers;

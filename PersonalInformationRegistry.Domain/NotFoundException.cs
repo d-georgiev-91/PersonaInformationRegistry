@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace PersonalInformationRegistry.Application
+namespace PersonalInformationRegistry.Domain
 {
     [Serializable]
     public class NotFoundException : Exception

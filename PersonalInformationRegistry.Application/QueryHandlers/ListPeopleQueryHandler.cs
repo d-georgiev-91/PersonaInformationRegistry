@@ -1,10 +1,10 @@
-﻿using PersonalInformationRegistry.Application.DTOs;
-using PersonalInformationRegistry.Domain.Repositories;
-using AutoMapper;
-using PersonalInformationRegistry.Application.CommandHandlers;
+﻿using AutoMapper;
 using MediatR;
+using PersonalInformationRegistry.Application.DTOs;
+using PersonalInformationRegistry.Application.Queries;
+using PersonalInformationRegistry.Domain.Repositories;
 
-namespace PersonalInformationRegistry.Application.Queries;
+namespace PersonalInformationRegistry.Application.QueryHandlers;
 
 public class ListPeopleQueryHandler : IRequestHandler<ListPeopleQuery, PaginatedList<PersonDto>>
 {

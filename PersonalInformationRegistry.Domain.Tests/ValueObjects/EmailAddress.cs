@@ -3,12 +3,12 @@
 [TestFixture]
 public class EmailAddressTests
 {
-    private static IEnumerable<string> RestricetedTopLevelDomains => EmailAddress.RestricetedTopLevelDomains;
+    private static IEnumerable<string> RestrictedTopLevelDomains => EmailAddress.RestrictedTopLevelDomains;
 
     [Test]
     public void Constructor_ValidEmail_CreatesInstance()
     {
-        var validEmail = "example@example.com";
+        const string validEmail = "example@example.com";
 
         var emailAddress = new EmailAddress(validEmail);
 
@@ -16,7 +16,7 @@ public class EmailAddressTests
     }
 
     [Test]
-    [TestCaseSource(nameof(RestricetedTopLevelDomains))]
+    [TestCaseSource(nameof(RestrictedTopLevelDomains))]
     public void Constructor_RestrictedDomain_ThrowsArgumentException(string topLevelDomain)
     {
         var restrictedEmail = $"example@example.{topLevelDomain}";
@@ -35,7 +35,7 @@ public class EmailAddressTests
     [Test]
     public void ToString_ReturnsEmailValue()
     {
-        var validEmail = "example@example.com";
+        const string validEmail = "example@example.com";
         var emailAddress = new EmailAddress(validEmail);
 
         var emailValue = emailAddress.ToString();

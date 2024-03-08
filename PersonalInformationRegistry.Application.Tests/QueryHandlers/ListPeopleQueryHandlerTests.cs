@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
+using MediatR;
 using NSubstitute;
-using NSubstitute.ReturnsExtensions;
-using PersonalInformationRegistry.Application.CommandHandlers;
 using PersonalInformationRegistry.Application.DTOs;
 using PersonalInformationRegistry.Application.Queries;
+using PersonalInformationRegistry.Application.QueryHandlers;
 using PersonalInformationRegistry.Domain.Entities;
 using PersonalInformationRegistry.Domain.Repositories;
 
@@ -14,7 +14,7 @@ public class ListPeopleQueryHandlerTests
 {
     private IPersonRepository _repository;
     private IMapper _mapper;
-    private ListPeopleQueryHandler _handler;
+    private IRequestHandler<ListPeopleQuery, PaginatedList<PersonDto>> _handler;
 
     [SetUp]
     public void SetUp()
